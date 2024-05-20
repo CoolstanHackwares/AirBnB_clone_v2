@@ -66,7 +66,7 @@ def number_odd_or_even(n):
 			       number=n,
                                odd_even=odd_even)
     else:
-        return 'Not a valid number'
+        return "Not a valid number"
 
 
 if __name__ == "__main__":
