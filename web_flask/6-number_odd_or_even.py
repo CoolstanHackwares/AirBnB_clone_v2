@@ -8,6 +8,9 @@ Routes:
     /python/(<text>): Displays 'Python' followed by the <text> value.
     /number/<n>: Displays 'n is a number' only if <n> is an integer.
     /number_template/<n>: Displays an HTML page only if <n> is an integer.
+        - Displays the value of <n> in the body.
+    /number_odd_or_even/<n>: Displays an HTML page only if <n> is an integer.
+        - States whether <n> is even or odd in the body.
 """
 from flask import Flask, render_template
 
@@ -58,8 +61,10 @@ def number_template(n):
 @app.route("/number_odd_or_even/<int:n>", strict_slashes=False)
 def number_odd_or_even(n):
     if isinstance(n, int):
-        return render_template("odd_or_even.html",
-     number=n, odd_even="odd" if n % 2 != 0 else "even")
+	odd_even="odd" if n % 2 != 0 else "even"
+        return render_template("6-number_odd_or_even.html",
+			       number=n,
+                               odd_even=odd_even)
     else:
         return 'Not a valid number'
 
